@@ -78,31 +78,25 @@
         
         var nom = [];
         var StockJ = window.localStorage;
+        var nomJoueur = ""
+
         function remplissage(){
-            console.log(nom);
-            return nom;
-            
-        }
-        remplissage();
-
-
-        function Cookie(){
             var nomJoueur = prompt("Entrer votre pseudo");
-            nom.push(nomJoueur);
-        window.localStorage.setItem("nomJ", nom);
+            console.log(nomJoueur)
         var test = window.localStorage.getItem("nomJ");
         var perso = document.getElementById("perso");
 
-            if(nom == StockJ.nomJ){
+            if(nomJoueur == StockJ.nomJ){
                 perso.innerText = "Re Bonjour"+' '+test;
             }
             else{
                 nom.push(nomJoueur);
-                perso.innerText = "Bonjour"+' '+test;
+                perso.innerText = "Bonjour"+' '+nomJoueur;
+                console.log(nom)
+                window.localStorage.setItem("nomJ", nom)
             }
-            
         }
-        Cookie();
+        remplissage();
         
         
 
