@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carré</title>
+    <script>
+        
+    </script>
+</head>
+<body>
+
+    <h1></h1>
+
+    <div id="kevin">
+        <p></p>
+        <p></p>
+    </div>
+    
+
+    <div id="perso"></div>
+
+
+
+    <div id="box"></div>
+
+    <button type="button" onclick="carre()">Carre</button>
+    
+
+    <div id="box2"></div>
+
+    <button type="button" onclick="carre2()">Carre2</button>
+
+    <button type="button" onclick="carrehaut()">Haut</button>
+
+    <button type="button" onclick="carrebas()">Bas</button>
+    
+    <!--<div id="quentin">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>-->
+</body>
+</html>
+
+<script>
+    var kevin = document.getElementById("kevin");// je vais récuperer la div ayant pour id 'kevin'
+    //var quentin = document.getElementById("quentin");
+    //var ligne = quentin.getElementsByTagName("ul")[0]; //je me place sur le 1er UL
+    //var toto = ligne.getElementsByTagName("li")[0]; //je me place sur le 1er li
+    //var toto2 = ligne.getElementsByTagName("li")[1]; //je me place sur le 2ème li
+
+    /*toto.innerText = 'BONJOUR';
+    toto2.innerText = 'KÉVIN';
+    console.log(toto);*/
+
+    //kevin.innerHTML = "<p>Bonjour je me nomme kevin</p>";
+    //var textkeke = document.createTextNode("La taille de mon ecran est" + ' ' + window.screen.height + 'px' +' '+ window.screen.width);
+    
+    //var text2 = prompt('Veuillez entré votre nom'); //Je récup ce qui est écris dans la window.prompt et je la stock dans la variable text2
+    //divtest.innerText = text2; // je vais ecrire dans la balise <p> le contenue stocké dans la variable text2
+    //kevin.appendChild(textkeke);
+    //kevin.appendChild(text2);
+   
+    //document.querySelectorAll(div.auto,div.moto) //--> permet de récupérer une liste d'éléments qui pour selecteur (div.auto, div.moto)
+    //document.querySelector(div.auto) // --> permet de récupérer un seul selecteur
+    //kevin.append(divtest,textkeke);
+    //console.log(kevin);
+
+    //var popo = document.getElementById('popo'); // créer la variable popo qui stock toute la div popo
+    //var popoChild = popo.childNodes; // créer la variable popoChild qui stock tout les childs de la div popo
+    //var parent = popoChild.parentNode; //permet de récupérer le parent
+        
+        var nom = [];
+        var StockJ = window.localStorage;
+        function remplissage(){
+            console.log(nom);
+            return nom;
+            
+        }
+        remplissage();
+
+
+        function Cookie(){
+            var nomJoueur = prompt("Entrer votre pseudo");
+            nom.push(nomJoueur);
+        window.localStorage.setItem("nomJ", nom);
+        var test = window.localStorage.getItem("nomJ");
+        var perso = document.getElementById("perso");
+
+            if(nom == StockJ.nomJ){
+                perso.innerText = "Re Bonjour"+' '+test;
+            }
+            else{
+                nom.push(nomJoueur);
+                perso.innerText = "Bonjour"+' '+test;
+            }
+            
+        }
+        Cookie();
+        
+        
+
+
+        var div = document.getElementById("box");
+        
+        function carre(){
+            let regex = /^[0-9]{1,2}$/;
+            var texte = prompt('Entrer la largeur (0 et 99)');
+            var texte2 = prompt("Enter la longueur (0 et 99)");
+            var croix = 'x';
+            var space = '  ';
+            var temp ='';
+            if(texte.match(regex) != null && texte2.match(regex) != null){
+                for(var i = 0; i<=texte-1;i++){
+                    temp += croix;
+                    for(var j = 1; j<=texte2;j++){
+                       if(i!=0 && i!=texte-1 && j!=1-1 && j!=texte2){
+                            temp += space;
+                        }
+                        else{
+                            temp += croix;
+                        }
+                    }
+                    temp += '\n';
+                   div.innerText = temp;
+                }
+            }
+            else{
+                return carre();
+            }
+        }
+
+
+        function carre2(){
+            let regex = /^[0-9]{1,2}$/;
+            var texte = prompt('Entrer le nombre de ligne entre (0 et 99)');
+            var texte2 = prompt('entrer la longueur :');
+            var croix = "x";
+            var space = '  ';
+            var temp ='';
+            if(texte.match(regex) != null){
+                for(var i = 0; i<=texte-1;i++){
+                    temp += croix;
+                    for(var j = 1; j<=texte2;j++){
+                       if(i!=0 && i!=texte-1 && j!=0-1 && j!=texte2){
+                            temp += space;
+                        }
+                        else{
+                            if(j>texte2-((texte2/2)+2) && j<texte2-((texte2/2)-2)){
+                                temp += space;
+                            }
+                            else{
+                                temp += croix;
+                            }
+                        }
+                    }
+                    temp += '\n';
+                   div.innerText = temp;
+                }
+            }
+            else{
+                return carre2();
+            }
+        }
+
+        function carrehaut(){
+            let regex = /^[0-9]{1,2}$/;
+            var texte = prompt('Entrer le nombre de ligne entre (0 et 99)');
+            var texte2 = prompt('entrer la longueur :');
+            var croix = "x";
+            var space = '  ';
+            var temp ='';
+            if(texte.match(regex) != null){
+                for(var i = 0; i<=texte-1;i++){
+                    temp += croix;
+                    for(var j = 1; j<=texte2;j++){
+                       if(i!=0 && i!=texte-1 && j!=0-1 && j!=texte2){
+                            temp += space;
+                        }
+                        else{
+                            if(i>0 && j>texte2-((texte2/2)+2) && j<texte2-((texte2/2)-2)){
+                                temp += space;
+                            }
+                            else{
+                                temp += croix;
+                            }
+                        }
+                    }
+                    temp += '\n';
+                   div.innerText = temp;
+                }
+            }
+            else{
+                return carrehaut();
+            }
+        }
+
+        function carrebas(){
+            let regex = /^[0-9]{1,2}$/;
+            var texte = prompt('Entrer le nombre de ligne entre (0 et 99)');
+            var texte2 = prompt('entrer la longueur :');
+            var croix = "x";
+            var space = '  ';
+            var temp ='';
+            if(texte.match(regex) != null){
+                for(var i = 0; i<=texte-1;i++){
+                    temp += croix;
+                    for(var j = 1; j<=texte2;j++){
+                       if(i!=0 && i!=texte-1 && j!=0-1 && j!=texte2){
+                            temp += space;
+                        }
+                        else{
+                            if( i!=texte && j>texte2-((texte2/2)+2) && j<texte2-((texte2/2)-2)){
+                                temp += space;
+                            }
+                            else{
+                                temp += croix;
+                            }
+                        }
+                    }
+                    temp += '\n';
+                   div.innerText = temp;
+                }
+            }
+            else{
+                return carre2();
+            }
+        }
+
+
+        /*var quentin = document.getElementById("quentin");
+        var ul = quentin.getElementsByTagName("ul")[0];
+        var li = ul.getElementsByTagName("li");
+        var liste = [];
+
+
+
+        function verifNom(){
+            var regex = /^([A-Za-zÀ-ÖØ-öø-ÿ- ]+)$/;
+            var divtest = kevin.getElementsByTagName('p')[0];
+            var test = prompt('Entrer votre nom');
+            var verifnom = test.trim()
+            if(verifnom.match(regex)){
+                if(verifnom.length > 2){
+                   //divtest.innerText = 'votre nom est:'+ test;
+                   return verifnom;
+                }               
+            }
+            else{
+                return verifNom();
+            }
+        };        
+        function verifAge(){
+            let regex = /^[0-9]{1,3}$/;
+            var divtest2 = kevin.getElementsByTagName('p')[1];
+            var age = prompt('Entrez votre âge');
+            if(age.match(regex) != null){
+                    //divtest2.innerText = 'votre age est:' + age;
+                    return age;
+            }
+            else{
+                return verifAge();
+            }
+        };
+        function ajoutagenom(){
+
+            liste.push(verifNom());
+            liste.push(verifAge());
+            var i=0;
+            console.log(liste);
+            while(i<liste.length){
+                if(i<ul.childElementCount){
+                  li[i].innerText = liste[i];  
+                }
+                i++;
+            };
+            //var firstli = li[0].innerText = 'votre nom est:'+' '+ nom;
+            //var secondli = li[1].innerText = 'votre age est:'+' '+ age;
+        };
+        ajoutagenom();
+
+        //verifNom();
+        //verifAge();*/
+</script>
